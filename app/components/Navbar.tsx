@@ -10,13 +10,14 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container">
         <Link href="/" className="logo">
-          Welcome to my word
+          Welcome to my mizuki
         </Link>
 
         <button
           className="menu-btn"
           onClick={() => setMenuOpen(!menuOpen)}
         >
+          ❖
         </button>
 
         <ul className={menuOpen ? "nav-links active" : "nav-links"}>
@@ -24,19 +25,19 @@ export default function Navbar() {
             <Link href="/">หน้าหลัก</Link>
           </li>
           <li>
-            <Link href="/about">เกี่ยวกับเรา</Link>
+            <Link href="/About">เกี่ยวกับเรา</Link>
           </li>
           <li>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/Dashboard">Dashboard</Link>
           </li>
           <li>
-            <Link href="/profile">Profile</Link>
+            <Link href="/Profile">Profile</Link>
           </li>
           <li>
             <Link href="/login">Login</Link>
           </li>
           <li>
-            <Link href="/register">Register</Link>
+            <Link href="/Register">Register</Link>
           </li>
         </ul>
       </div>
