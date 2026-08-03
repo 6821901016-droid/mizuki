@@ -61,9 +61,17 @@ export default function Navbar() {
           </li>
 
           {user && (
+            <>
             <li>
               <Link href="/dashboard">Dashboard</Link>
             </li>
+            <li>
+              <Link href="/admin/categories">Category</Link>
+            </li>
+            <li>
+              <Link href="/admin/products">Product</Link>
+            </li>
+            </>
           )}
 
           {user?.role === "admin" && (
@@ -75,7 +83,7 @@ export default function Navbar() {
               <Link href="/admin/categories">Category</Link>
             </li>
             <li>
-              <Link href="/admin/product">Product</Link>
+              <Link href="/admin/products">Product</Link>
             </li>
             </>
           )}
@@ -87,7 +95,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link href="/register" className="btn-register">
-                  register
+                  Register
                 </Link>
               </li>
             </>
