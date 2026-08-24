@@ -17,7 +17,7 @@ export default function BlogForm() {
       .replace(/[^a-z0-9ก-๙-]/g, "");
   }
 
-  function handleTitleChange(value: string) {
+  function handleNameChange(value: string) {
     setTitle(value);
     setSlug(createSlug(value));
   }
@@ -29,7 +29,7 @@ export default function BlogForm() {
       setSubmitting(true);
       setMessage("");
 
-      const response = await fetch("/api/categories", {
+      const response = await fetch("/api/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,10 +44,10 @@ export default function BlogForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message ?? "เพิ่มหมวดหมู่ไม่สำเร็จ");
+        throw new Error(data.message ?? "เพิ่มข้อมูลไม่สำเร็จ");
       }
 
-      setMessage("เพิ่มหมวดหมู่สำเร็จ");
+      setMessage("เพิ่มข้อมูลสำเร็จ");
       setTitle("");
       setSlug("");
       setContent("");
@@ -65,34 +65,34 @@ export default function BlogForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      
+      className="mx-auto max-w-xl space-y-4 rounded-xl border p-6"
     >
-      
+      <h1 className="text-2xl font-bold">เพิ่มข้อมูล</h1>
 
       <div>
-        <label >
-          ชื่อหมวดหมู่
+        <label className="mb-1 block font-medium">
+          ชื่อข้อมูล
         </label>
 
         <input
           type="text"
           value={title}
           onChange={(event) =>
-            handleTitleChange(event.target.value)
+            handleNameChange(event.target.value)
           }
-          
+          className="w-full rounded-lg border px-3 py-2"
           required
         />
       </div>
 
       <div>
-        
+        <label className="mb-1 block">Slug</label>
 
         <input
           type="text"
           value={slug}
           onChange={(event) => setSlug(event.target.value)}
-          
+          className="w-full rounded-lg border px-3 py-2"
           required
         />
       </div>
@@ -120,9 +120,9 @@ export default function BlogForm() {
       <button
         type="submit"
         disabled={submitting}
-        
+        className="rounded-lg bg-black px-5 py-2 text-white disabled:opacity-50"
       >
-        {submitting ? "กำลังบันทึก..." : "เพิ่มหมวดหมู่"}
+        {submitting ? "กำลังบันทึก..." : "เพิ่มข้อมูล"}
       </button>
     </form>
   );
